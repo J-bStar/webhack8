@@ -1,0 +1,3 @@
+# 환경변수 오류시 shell에 그대로 복붙해주시면 됩니다.
+
+export MONGO_DB="mongodb+srv://webtest8:webtest1234~@cluster0.cmale.mongodb.net/webtest8?retryWrites=true&w=majority"
