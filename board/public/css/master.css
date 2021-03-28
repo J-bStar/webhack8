@@ -1,0 +1,95 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0px;
+}
+.breadcrumb-item {
+  font-size: 0.8em !important;
+}
+.ellipsis{
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.board-table {
+  table-layout: fixed;
+}
+.board-table .author,
+.board-table .date {
+  width: 100px;
+}
+.board-table .title-container:hover .title-comments,
+.board-table .title-container:hover .title-text
+{
+  text-decoration: underline;
+}
+
+.post-body,
+.comment-text {
+  white-space: pre-line;
+}
+.post-info{
+  font-size: 0.8em;
+}
+
+.user-form {
+  width: 400px;
+}
+
+.user-form {
+  width: 400px;
+}
+
+.post-index-tool {
+  max-width: 450px;
+}
+.post-index-tool input[type='text']{
+  max-width: 130px;
+}
+
+.highlighted {
+  background-color: yellow;
+}
+
+.comment-edit,
+.comment-reply,
+.comment-edit-enabled .comment-show {
+  display:none;
+}
+
+.comment-edit-enabled .comment-edit,
+.comment-reply-enabled .comment-reply {
+  display:inherit;
+}
+
+h1, ul {
+  font-family: 'Open Sans', sans-serif;
+}
+hr {
+  margin: 0 30px;
+}
+
+.profile {
+  background-color: white;
+  border-radius: 10px;
+  margin: 0 auto;
+  width: 1000px;
+
+  text-align: center;
+}
+
+.profile-image {
+  width: 300px;
+  height: 300px;
+  border-radius: 75px;
+  margin-top: 10px;
+}
+
+.text{
+  color: gray;
+  text-align: left;
+  font-size: 1.2em;
+  list-style: none;
+}

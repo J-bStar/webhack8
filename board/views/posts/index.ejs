@@ -1,0 +1,54 @@
+<!DOCTYPE html> <!-- 자취후기 게시판의 index 페이지 입니다. -->
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+
+    <div class="container mb-3">
+
+      <h2 class="mb-3">자취후기</h2>
+
+      <table class="board-table table table-sm border-bottom">
+
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">제목</th>
+            <th scope="col" class="author">글쓴이</th>
+            <th scope="col" class="date">생성날짜</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% if(posts == null || posts.length == 0){ %>
+            <tr>
+              <td colspan=2> 생성된 게시물이 없습니다 :( </td>
+            </tr>
+          <% } %>
+          <% posts.forEach(function(post) { %>
+            <tr>
+              <td>
+                <a href="/posts/<%= post._id %>"><div class="ellipsis"><%= post.title %></div></a>
+              </td>
+              <td class="author">
+                <div class="ellipsis"><%= post.author ? post.author.username : "" %></div>
+              </td>
+              <td class="date">
+                <span data-date="<%= post.createdAt %>"></span>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+
+      </table>
+
+      <div>
+        <% if(isAuthenticated){ %> <!-- 로그인 시 작성 가능합니다. -->
+          <a class="btn btn-primary" href="/posts/new">작성</a>
+        <% } %>
+      </div>
+
+    </div>
+  </body>
+</html>
