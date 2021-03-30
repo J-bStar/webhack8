@@ -31,7 +31,7 @@ router.get('/:username', util.isLoggedin, checkPermission, function(req, res){
 });
 
 // Edit
-router.get('/:username/edit', util.isLoggedin, checkPermission, function(req, res){
+router.get('/:username', util.isLoggedin, checkPermission, function(req, res){
   var user = req.flash('user')[0];
   var errors = req.flash('errors')[0] || {};
   if(!user){
@@ -43,6 +43,14 @@ router.get('/:username/edit', util.isLoggedin, checkPermission, function(req, re
   else {
     res.render('users/edit', { username:req.params.username, user:user, errors:errors });
   }
+});
+
+// Delete
+router.delete('/:username', function(req, res){
+  User.deleteOne({username:req.params.username}, function(err){
+    if(err) return res.json(err);
+    res.redirect('/');
+  });
 });
 
 // Update
