@@ -1,7 +1,7 @@
 var express  = require('express');
 var router = express.Router();
-var Comment = require('../models/Comment'); // schema load
-var Post = require('../models/Recipe'); // schema load
+var Comment = require('../models/Comment'); // file model load
+var Post = require('../models/Recipe'); // file model load
 var util = require('../util');
 
 // Comment 생성 (post id <-> DB 관련 middle ware)

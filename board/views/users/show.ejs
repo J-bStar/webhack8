@@ -31,6 +31,9 @@
         <% if(isAuthenticated && currentUser.id == user.id){ %>
           <a class="btn btn-primary" href="/users/<%= user.username %>/edit">수정</a>
         <% } %>
+        <form action="/users/<%= user.username %>?_method=delete" method="post" class="d-inline">
+          <a class="btn btn-primary" href="javascript:void(0)" onclick="confirm('정말로 진심으로 탈퇴하시겠습니까?')?this.parentElement.submit():null;">탈퇴</a>
+        </form>
       </div>
 
     </div>

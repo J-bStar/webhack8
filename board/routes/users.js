@@ -45,6 +45,14 @@ router.get('/:username/edit', util.isLoggedin, checkPermission, function(req, re
   }
 });
 
+// Delete
+router.delete('/:username', function(req, res){
+  User.deleteOne({username:req.params.username}, function(err){
+    if(err) return res.json(err);
+    res.redirect('/');
+  });
+});
+
 // Update
 router.put('/:username', util.isLoggedin, checkPermission, function(req, res, next){
   User.findOne({username:req.params.username})

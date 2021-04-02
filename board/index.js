@@ -1,3 +1,6 @@
+var dotenv = require('dotenv');
+dotenv.config();
+
 // 각종 패키지를 불러옵니다 (bodyparser, express-session, connect-mongo 등)
 var express = require('express');
 var mongoose = require('mongoose');
@@ -24,24 +27,6 @@ db.on('error', function(err){
   console.log('DB ERROR : ', err);
 });
 
-// 그 외 설정입니다.
-// MongoStore <-> Session Storage (session 을 db에 저장시켜 session을 유지합니다 = 서버 restart를 해도 로그인이 유지됩니다)
-app.set('view engine', 'ejs');
-app.use(express.static(__dirname+'/public'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(methodOverride('_method'));
-app.use(flash());
-app.use(session({
-  secret:'MySecret', 
-  resave:true, 
-  saveUninitialized:true,
-  store: MongoStore.create({
-    mongoUrl: 'mongodb+srv://webtest8:webtest1234~@cluster0.cmale.mongodb.net/webtest8?retryWrites=true&w=majority',
-    collection: 'users'
-  })
-}));
-
 // Passport 설정입니다.
 app.use(passport.initialize());
 app.use(passport.session());
@@ -61,6 +46,30 @@ app.use('/users', require('./routes/users'));
 app.use('/recipe', util.getPostQueryString, require('./routes/recipe'));
 app.use('/comments', util.getPostQueryString, require('./routes/comments'));
 app.use('/files', require('./routes/files'));
+app.use('/admin', require('./routes/admin'));
+
+// 그 외 설정입니다.
+// MongoStore <-> Session Storage (session 을 db에 저장시켜 session을 유지합니다 = 서버 restart를 해도 로그인이 유지됩니다)
+app.set('view engine', 'ejs');
+app.use(express.static(__dirname+'/public'));
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+app.use(methodOverride('_method'));
+app.use(flash());
+app.use(session({
+  secret: process.env.COOKIE_SECRET,
+    cookie: {
+      httpOnly: true,
+      secure: false, 
+    }, 
+  resave:true, 
+  saveUninitialized:true,
+  store: MongoStore.create({
+    mongoUrl: 'mongodb+srv://webtest8:webtest1234~@cluster0.cmale.mongodb.net/webtest8?retryWrites=true&w=majority',
+    collection: 'users'
+  })
+}));
+
 
 // Port 설정 ('http://localhost:3000' 주소를 open 합니다.)
 var port = 3000;

@@ -10,20 +10,33 @@
   "author": "webhacking 8 team",
   "license": "ISC",
   "dependencies": {
+    "@admin-bro/design-system": "^1.7.2",
+    "@admin-bro/express": "^3.1.0",
+    "@admin-bro/mongoose": "^1.1.0",
+    "@types/styled-components": "^5.1.9",
+    "admin-bro": "^3.4.0",
+    "admin-bro-expressjs": "^2.1.1",
+    "admin-bro-mongoose": "^0.5.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^4.4.1",
     "connect-mongodb-session": "^2.4.1",
+    "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "express-session": "^1.17.0",
+    "express-formidable": "^1.2.0",
+    "express-session": "^1.17.1",
     "method-override": "^3.0.0",
     "mongoose": "^5.12.2",
     "mongoose-session": "0.0.4",
     "multer": "^1.4.2",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "styled-components": "^5.2.3"
+  },
+  "devDependencies": {
+    "@rollup/plugin-replace": "^2.4.2"
   }
 }

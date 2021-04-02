@@ -34,7 +34,7 @@ router.post('/login',
       isValid = false;
       errors.password = 'Password is required!';
     }
-
+    
     if(isValid){
       next();
     }
